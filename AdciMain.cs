@@ -15,7 +15,7 @@ namespace Adci
     public partial class AdciMain : Form
     {
         private bool isTracking = false;
-        private SerialPort srpt = new SerialPort(settings.getComPort());
+        private SerialPort srpt;
         private LinkedList<string> dropCount = new LinkedList<string>(); 
         private LinkedList<string> phValue = new LinkedList<string>();
         private LinkedList<string[]> CSVData = new LinkedList<string[]>();
@@ -38,6 +38,7 @@ namespace Adci
             if (isTracking)
             {
                 isTracking = false;
+                beginTracking.Text = "Begin Tracking";
                 ioStatus.Text = "Disconnected";
                 ioBaudRate.Text = "Baud Rate: " + settings.getBaudRate();
                 srpt.Close();
@@ -48,6 +49,7 @@ namespace Adci
                 Thread thread = new Thread(new ThreadStart(beginSerialReading));
                 thread.IsBackground = true;
                 thread.Start();
+                beginTracking.Text = "Stop Tracking";
                 ioStatus.Text = "Listening on " + settings.getComPort();
                 ioBaudRate.Text = "Baud Rate: " + settings.getBaudRate();
             }
@@ -55,6 +57,7 @@ namespace Adci
 
         private void beginSerialReading()
         {
+            srpt = new SerialPort(settings.getComPort());
             srpt.BaudRate = settings.getBaudRate();
             srpt.Parity = Parity.None;
             srpt.StopBits = StopBits.One;
@@ -67,9 +70,9 @@ namespace Adci
             {
                 srpt.Open();
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("There was an error opening the serial port.");
+                MessageBox.Show("There was an error opening the serial port: "+e.ToString());
             }
         }
 
@@ -92,8 +95,7 @@ namespace Adci
                     this.ioBox.BeginInvoke((MethodInvoker)delegate() { this.dcGraph.Series["PH"].Points.AddXY(data[0], data[1]);});
                     
                     //add the data to a linkedlist (for CSV export)
-                    dropCount.AddLast(data[0]);
-                    phValue.AddLast(data[1]);
+                    CSVData.AddLast(new string[] { data[0], data[1]});
                 }
             }
         }
@@ -110,9 +112,6 @@ namespace Adci
             {
                 string filePath = @"AdciData.csv";
                 StringBuilder sb = new StringBuilder();
-
-                for(int i = 0; i < dropCount.Count; i++)
-                    CSVData.AddLast(new string[] {dropCount.ElementAt(i),phValue.ElementAt(i)});
 
                 for (int i = 0; i < CSVData.Count(); i++)
                     sb.AppendLine(string.Join(",", CSVData.ElementAt(i)));
@@ -132,10 +131,11 @@ namespace Adci
             dropCount.Clear();
             phValue.Clear();
             CSVData.Clear();
-            ioBox.Clear();
+            ioBox.Items.Clear();
             foreach(var series in dcGraph.Series) {
                 series.Points.Clear();
             }
+            dcGraph.Series["PH"].Points.AddXY(0, 0);
         }
     }
 }

@@ -7,3 +7,12 @@ c:\users\justin\documents\visual studio 2013\Projects\Adci\Adci\obj\Debug\Adci.c
 c:\users\justin\documents\visual studio 2013\Projects\Adci\Adci\obj\Debug\Adci.exe
 c:\users\justin\documents\visual studio 2013\Projects\Adci\Adci\obj\Debug\Adci.pdb
 C:\Users\Justin\documents\visual studio 2013\Projects\Adci\Adci\obj\Debug\Adci.EditSettings.resources
+F:\Sources\Adci\Adci\obj\Debug\Adci.exe
+F:\Sources\Adci\Adci\obj\Debug\Adci.pdb
+F:\Sources\Adci\Adci\bin\Debug\Adci.exe
+F:\Sources\Adci\Adci\bin\Debug\Adci.pdb
+F:\Sources\Adci\Adci\obj\Debug\Adci.csprojResolveAssemblyReference.cache
+F:\Sources\Adci\Adci\obj\Debug\Adci.AdciMain.resources
+F:\Sources\Adci\Adci\obj\Debug\Adci.Properties.Resources.resources
+F:\Sources\Adci\Adci\obj\Debug\Adci.EditSettings.resources
+F:\Sources\Adci\Adci\obj\Debug\Adci.csproj.GenerateResource.Cache

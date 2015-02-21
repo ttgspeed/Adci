@@ -9,6 +9,7 @@ namespace Adci
     {
         private static int baudRate = 9600;
         private static string comPort = "COM1";
+        private static int offsetPH = 0;
 
         public static void setbaudRate(int br)
         {
@@ -18,6 +19,10 @@ namespace Adci
         {
             comPort = pr.ToUpper();
         }
+        public static void setOffsetPH(int osph)
+        {
+            offsetPH = osph;
+        }
         public static int getBaudRate()
         {
             return baudRate;
@@ -25,6 +30,10 @@ namespace Adci
         public static string getComPort()
         {
             return comPort;
+        }
+        public static int getOffsetPH()
+        {
+            return offsetPH;
         }
     }
 }

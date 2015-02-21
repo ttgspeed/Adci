@@ -42,7 +42,7 @@
             this.ldSettings = new System.Windows.Forms.Button();
             this.exportCSV = new System.Windows.Forms.Button();
             this.resetData = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ldCalibrate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dcGraph)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +105,7 @@
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip1.Size = new System.Drawing.Size(838, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -141,7 +142,7 @@
             // 
             // resetData
             // 
-            this.resetData.Location = new System.Drawing.Point(176, 226);
+            this.resetData.Location = new System.Drawing.Point(504, 226);
             this.resetData.Name = "resetData";
             this.resetData.Size = new System.Drawing.Size(158, 23);
             this.resetData.TabIndex = 7;
@@ -149,21 +150,22 @@
             this.resetData.UseVisualStyleBackColor = true;
             this.resetData.Click += new System.EventHandler(this.resetData_Click);
             // 
-            // button3
+            // ldCalibrate
             // 
-            this.button3.Location = new System.Drawing.Point(504, 226);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(158, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Pleaceholder";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ldCalibrate.Location = new System.Drawing.Point(176, 227);
+            this.ldCalibrate.Name = "ldCalibrate";
+            this.ldCalibrate.Size = new System.Drawing.Size(158, 23);
+            this.ldCalibrate.TabIndex = 8;
+            this.ldCalibrate.Text = "Calibrate";
+            this.ldCalibrate.UseVisualStyleBackColor = true;
+            this.ldCalibrate.Click += new System.EventHandler(this.ldCalibrate_Click);
             // 
             // AdciMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 275);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.ldCalibrate);
             this.Controls.Add(this.resetData);
             this.Controls.Add(this.exportCSV);
             this.Controls.Add(this.ldSettings);
@@ -174,6 +176,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "AdciMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adci";
             this.Load += new System.EventHandler(this.Adci_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dcGraph)).EndInit();
@@ -197,7 +200,7 @@
         private System.Windows.Forms.ToolStripStatusLabel ioBaudRate;
         private System.Windows.Forms.Button exportCSV;
         private System.Windows.Forms.Button resetData;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ldCalibrate;
     }
 }
 

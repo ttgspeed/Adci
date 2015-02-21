@@ -99,7 +99,10 @@
             this.Controls.Add(this.cpSetting);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "EditSettings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.EditSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.brSetting)).EndInit();

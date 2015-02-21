@@ -16,3 +16,4 @@ F:\Sources\Adci\Adci\obj\Debug\Adci.AdciMain.resources
 F:\Sources\Adci\Adci\obj\Debug\Adci.Properties.Resources.resources
 F:\Sources\Adci\Adci\obj\Debug\Adci.EditSettings.resources
 F:\Sources\Adci\Adci\obj\Debug\Adci.csproj.GenerateResource.Cache
+F:\Sources\Adci\Adci\obj\Debug\Adci.Calibration.resources

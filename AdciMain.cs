@@ -88,16 +88,22 @@ namespace Adci
             if (input.Contains(","))
             {
                 string[] data = input.Split((new Char [] {',' }));
+                data[1] = formatPH(System.Convert.ToInt16(data[1])).ToString();
                 if (data.Length == 2)
                 {
                     //add the data to the GUI list
                     this.ioBox.BeginInvoke((MethodInvoker)delegate() { this.ioBox.Items.Add(new ListViewItem(data));});
-                    this.ioBox.BeginInvoke((MethodInvoker)delegate() { this.dcGraph.Series["PH"].Points.AddXY(data[0], data[1]);});
+                    this.ioBox.BeginInvoke((MethodInvoker)delegate() { this.dcGraph.Series["PH"].Points.AddXY(data[0], data[1]); });
                     
-                    //add the data to a linkedlist (for CSV export)
+                    //add the data to a linkedlist (as string for CSV export)
                     CSVData.AddLast(new string[] { data[0], data[1]});
                 }
             }
+        }
+
+        private int formatPH(int rawPH)
+        {
+            return (rawPH - settings.getOffsetPH());
         }
 
         private void ldSettings_Click(object sender, EventArgs e)
@@ -132,10 +138,25 @@ namespace Adci
             phValue.Clear();
             CSVData.Clear();
             ioBox.Items.Clear();
-            foreach(var series in dcGraph.Series) {
+            foreach(var series in dcGraph.Series)
+            {
                 series.Points.Clear();
             }
             dcGraph.Series["PH"].Points.AddXY(0, 0);
+        }
+
+        private void ldCalibrate_Click(object sender, EventArgs e)
+        {
+            try {
+                int lastPH = System.Convert.ToInt16(CSVData.ElementAt(CSVData.Count - 1)[1]);
+                Calibration cfm = new Calibration();
+                cfm.setLastData(lastPH);
+                cfm.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Please capture one value before calibrating");
+            }
         }
     }
 }
